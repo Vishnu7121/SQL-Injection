@@ -1,0 +1,13 @@
+<!-- Compile the classes and copy other files to conform to the WAR structure -->
+<target name="compile">
+    <mkdir dir="build/WEB-INF/classes" />
+    <copy file="WebContent/index.jsp" todir="build" />
+    <copydir src="WebContent/WEB-INF/" dest="build/WEB-INF/" />
+    <javac srcdir="src" destdir="build/WEB-INF/classes" classpath="WebContent/WEB-INF/lib/javax.servlet-api-4.0.1.jar" />
+</target>
+
+<!-- Create the WAR file -->    
+<target name="war">
+    <mkdir dir="dist" />
+    <war destfile="dist/test.war" basedir="build" webxml="WebContent/WEB-INF/web.xml"/>
+</target>
