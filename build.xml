@@ -14,7 +14,7 @@
     <delete dir="build" />
   </target>
 
-<!-- Compile the classes and copy other files to conform to the WAR structure ->
+<!-- Compile the classes and copy other files to conform to the WAR structure -->
 <target name="compile">
     <mkdir dir="build/WEB-INF/classes" />
      <copydir src="WebContent/view/" dest="build/view/" />
