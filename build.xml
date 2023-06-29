@@ -24,12 +24,12 @@
 <copydir src="WebContent/fonts/" dest="build/fonts/" />
    <!-- <copy file="WebContent/*" todir="build" /> -->
     <copydir src="WebContent/WEB-INF/" dest="build/WEB-INF/" />
-    <javac srcdir="src" destdir="build/WEB-INF/classes" classpathref="build.classpath">
+    <javac srcdir="src" destdir="build/WEB-INF/classes" classpathref="build.classpath" />
 </target>
 
 <!-- Create the WAR file -->
 <target name="dist">
     <mkdir dir="dist" />
-    <war destfile="dist/test.war" basedir="build" webxml="WebContent/WEB-INF/web.xml">
+    <war destfile="dist/test.war" basedir="build" webxml="WebContent/WEB-INF/web.xml" />
 </target>
 </project>
