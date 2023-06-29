@@ -1,12 +1,12 @@
-#!/bin/bash
+/bin/bash
 
 DIR=./srikanth
+if [ -e $DIR ];then rm -rf $DIR ; fi
 [ -d $DIR ] && echo "Directory Exists" || mkdir $DIR
-fi
-cd ./srikanth/
+cd ./$DIR
 echo "cloning a SQL-Injection"
 sudo git clone https://github.com/srikanthreddy-lectures/SQL-Injection.git
-cd ./srikanth/SQL-Injection/
+cd ./SQL-Injection/
 sudo ant -d clean compile dist
 result=$( sudo docker images -q sql-injection_web )
 if [[ -n "$result" ]]; then
