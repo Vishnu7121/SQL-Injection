@@ -50,7 +50,7 @@ public class DiscussionServlet extends HttpServlet {
 			request.getRequestDispatcher("view/discussion.jsp").forward(request, response);
 			
 		}
-		catch(SQLException e)
+		catch(Exception e)
 		{
 			log(e.getMessage(), e);
 		}
@@ -93,7 +93,7 @@ public class DiscussionServlet extends HttpServlet {
 					response.sendRedirect("discussion.do");
 					
 				}
-				catch(SQLException e)
+				catch(Exception e)
 				{
 					log(e.getMessage(), e);
 				}
