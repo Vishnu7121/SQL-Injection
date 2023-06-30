@@ -45,7 +45,7 @@ public class DeleteTodoServlet extends HttpServlet {
 			todoService.deleteTodo(todo_id,conn);
 			response.sendRedirect("todoList.do");
 		}
-		catch(SQLException e)
+		catch(Exception e)
 		{
 			log(e.getMessage(), e);
 		}
@@ -53,7 +53,7 @@ public class DeleteTodoServlet extends HttpServlet {
 		{
 			try {
 				conn.close();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
