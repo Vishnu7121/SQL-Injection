@@ -64,7 +64,7 @@ public class RegistrationServlet extends HttpServlet {
 					        conn = DriverManager.getConnection(dbURL + dbName, dbUsername, dbPassword);
 							//conn = ds.getConnection();
 						}
-						catch(SQLException e)
+						catch(Exception e)
 						{
 							log(e.getMessage(), e);
 						}
