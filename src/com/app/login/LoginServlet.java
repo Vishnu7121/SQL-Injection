@@ -88,7 +88,7 @@ public class LoginServlet extends HttpServlet {
 
 			}
 		}
-		catch(SQLException e)
+		catch(Exception e)
 		{
 			log(e.getMessage(), e);
 		}
