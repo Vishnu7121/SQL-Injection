@@ -59,7 +59,7 @@ public class TodoList extends HttpServlet {
 			request.getRequestDispatcher("view/todoList.jsp").forward(request, response);
 
 		}
-		catch(SQLException e)
+		catch(Exception e)
 		{
 			LOG.error("doGet : Catch block : SQLException : "+e.getMessage());
 			log(e.getMessage(), e);
@@ -69,7 +69,7 @@ public class TodoList extends HttpServlet {
 			try {
 				conn.close();
 				LOG.trace("doGet : DBConnection Close");
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				LOG.error("doGet : Finally block : SQLException : "+e.getMessage());
 				e.printStackTrace();
