@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
+//import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +29,8 @@ public class AccountUpdateServlet extends HttpServlet {
 	static final Logger LOG = LoggerFactory.getLogger(AccountUpdateServlet.class);
 
        
-	@Resource(name = "jdbc/demo1")
-    private DataSource ds;
+	//@Resource(name = "jdbc/demo1")
+    //private DataSource ds;
 	Connection conn;
    
 	private UserAccountService userAccountService = new UserAccountService();
@@ -45,7 +45,17 @@ public class AccountUpdateServlet extends HttpServlet {
 		try
 		{
 			LOG.trace("doGet : DBConnection Open");
-			conn = ds.getConnection();
+			// Initialize the database
+			  String dbDriver = "com.mysql.jdbc.Driver";
+		        String dbURL = "jdbc:mysql://db:3306/";
+		        // Database name to access
+		        String dbName = "demo1";
+		        String dbUsername = "srikanth";
+		        String dbPassword = "17121981";
+		  
+		        Class.forName(dbDriver);
+		        conn = DriverManager.getConnection(dbURL + dbName, dbUsername, dbPassword);
+			//conn = ds.getConnection();
 			LOG.info("doGet : Retrive accout details");
 			request.setAttribute("user", userAccountService.retrieveAccountDetails(user_id,conn));
 			request.setAttribute("fileName", fileName);
