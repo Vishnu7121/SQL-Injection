@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
+//import javax.sql.DataSource;
 
 import org.owasp.validator.html.AntiSamy;
 import org.owasp.validator.html.CleanResults;
@@ -26,8 +26,8 @@ import org.owasp.validator.html.ScanException;
 @WebServlet("/todoSearch.do")
 public class SearchTodoServlet extends HttpServlet {
 	
-	@Resource(name = "jdbc/demo1")
-    private DataSource ds;
+	//@Resource(name = "jdbc/demo1")
+    //private DataSource ds;
 	Connection conn;
 	
 	private Policy policy;
@@ -43,7 +43,17 @@ public class SearchTodoServlet extends HttpServlet {
 		String keyword=request.getParameter("keyword");
 		try
 		{
-			conn = ds.getConnection();
+			// Initialize the database
+			  String dbDriver = "com.mysql.jdbc.Driver";
+		        String dbURL = "jdbc:mysql://db:3306/";
+		        // Database name to access
+		        String dbName = "demo1";
+		        String dbUsername = "srikanth";
+		        String dbPassword = "17121981";
+		  
+		        Class.forName(dbDriver);
+		        conn = DriverManager.getConnection(dbURL + dbName, dbUsername, dbPassword);
+			//conn = ds.getConnection();
 			request.setAttribute("keyword", keyword);
 			searchList=todoService.searchTodos(user_id,keyword,conn);
 			request.setAttribute("searchSize", searchList.size());
