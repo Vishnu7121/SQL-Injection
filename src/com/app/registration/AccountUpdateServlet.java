@@ -66,7 +66,7 @@ public class AccountUpdateServlet extends HttpServlet {
 
 			
 		}
-		catch(SQLException e)
+		catch(Exception e)
 		{
 			LOG.error("doGet : Catch block : SQLException : "+e.getMessage());
 			log(e.getMessage(), e);
@@ -136,7 +136,7 @@ public class AccountUpdateServlet extends HttpServlet {
     			
     			
     		}
-    		catch(SQLException e)
+    		catch(Exception e)
     		{
     			LOG.error("doPost : Catch block : SQLException : "+e.getMessage());
     			log(e.getMessage(), e);
