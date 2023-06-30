@@ -57,7 +57,7 @@ public class AddTodoServlet extends HttpServlet {
 			response.sendRedirect("todoList.do");
 			
 		}
-		catch(SQLException e)
+		catch(Exception e)
 		{
 			log(e.getMessage(), e);
 		}
