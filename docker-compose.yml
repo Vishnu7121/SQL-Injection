@@ -24,7 +24,7 @@ web:
   build: .
   # Environment variables do not appear to be getting loaded the first time Tom>
   environment:
-    JDBC_URL: jdbc:mysql://db:3306/demo1?connectTimeout=0&amp;socketTimeout=0&a>
+    JDBC_URL: jdbc:mysql://db:3306/demo1?connectTimeout=0&amp;socketTimeout=0&a;autoReconnect=true&amp;allowMultiQueries=false
     JDBC_USER: srikanth
     JDBC_PASS: 17121981
   ports:
