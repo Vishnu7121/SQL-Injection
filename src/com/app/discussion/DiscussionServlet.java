@@ -3,6 +3,8 @@ package com.app.discussion;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.DriverManager;
+
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 //import javax.sql.DataSource;
 
 import com.app.todo.Todo;
@@ -72,7 +75,17 @@ public class DiscussionServlet extends HttpServlet {
 		    
 			   try
 				{
-					conn = ds.getConnection();
+					// Initialize the database
+					  String dbDriver = "com.mysql.jdbc.Driver";
+				        String dbURL = "jdbc:mysql://db:3306/";
+				        // Database name to access
+				        String dbName = "demo1";
+				        String dbUsername = "srikanth";
+				        String dbPassword = "17121981";
+				  
+				        Class.forName(dbDriver);
+				        conn = DriverManager.getConnection(dbURL + dbName, dbUsername, dbPassword);
+					//conn = ds.getConnection();
 					Message m=new Message();
 					m.setTopic(topic);
 					m.setDescription(description);
