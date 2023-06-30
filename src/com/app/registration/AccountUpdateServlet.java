@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.DriverManager;
+
 //import javax.sql.DataSource;
 
 import org.slf4j.Logger;
@@ -100,7 +102,16 @@ public class AccountUpdateServlet extends HttpServlet {
         	try
     		{
         		LOG.trace("doPost : DBConnection Open");
-    			conn = ds.getConnection();
+			 String dbDriver = "com.mysql.jdbc.Driver";
+		        String dbURL = "jdbc:mysql://db:3306/";
+		        // Database name to access
+		        String dbName = "demo1";
+		        String dbUsername = "srikanth";
+		        String dbPassword = "17121981";
+		  
+		        Class.forName(dbDriver);
+		        conn = DriverManager.getConnection(dbURL + dbName, dbUsername, dbPassword);
+    			//conn = ds.getConnection();
     			User user=new User();
     			user.setUser_id(user_id);
     			user.setFullname(fullname);
