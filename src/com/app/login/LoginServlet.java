@@ -28,8 +28,8 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//static final Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 	
-	@Resource(name = "jdbc/demo1")
-    private DataSource ds;
+	//@Resource(name = "jdbc/demo1")
+   // private DataSource ds;
 	Connection conn;
 	
    private LoginService userValidation =new LoginService();
@@ -50,7 +50,17 @@ public class LoginServlet extends HttpServlet {
 		//LOG.trace("Requested User : "+name);
 		try
 		{
-			conn = ds.getConnection();
+			// Initialize the database
+			String dbDriver = "com.mysql.jdbc.Driver";
+		        String dbURL = "jdbc:mysql://db:3306/";
+		        // Database name to access
+		        String dbName = "demo1";
+		        String dbUsername = "srikanth";
+		        String dbPassword = "17121981";
+		  
+		        Class.forName(dbDriver);
+		        conn = DriverManager.getConnection(dbURL + dbName, dbUsername, dbPassword);
+			//con = ds.getConnection();
 		
 			boolean isUserValid=userValidation.isUserValid(name, password,user,conn);
 			if(isUserValid)
