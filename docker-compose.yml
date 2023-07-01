@@ -9,8 +9,8 @@ db:
     - "3306:3306"
   command: --default-authentication-plugin=mysql_native_password
   volumes:
-    - /opt/test:/var/lib/mysql
-    - ./db:/docker-entrypoint-initdb.d
+    - container-volume:/var/lib/mysql
+    - ./db/DB_INIT_SQL:/docker-entrypoint-initdb.d/1.sql
 
 phpmyadmin:
     links:
@@ -34,3 +34,6 @@ web:
    - ./dist/test.war:/usr/local/tomcat/webapps/test.war
   links:
     - db
+
+volumes:
+  container-volume:
