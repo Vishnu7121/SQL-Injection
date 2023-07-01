@@ -7,6 +7,7 @@ db:
     MYSQL_PASSWORD: 17121981
   ports:
     - "3306:3306"
+  command: --default-authentication-plugin=mysql_native_password
   volumes:
     - /opt/test:/var/lib/mysql
     - ./db:/docker-entrypoint-initdb.d
