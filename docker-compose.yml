@@ -9,7 +9,7 @@ db:
     - "3306:3306"
   volumes:
     - container-volume:/var/lib/mysql
-    - ./db/DB_INIT_SQL:/docker-entrypoint-initdb.d/1.sql
+    - ./db/DB_INIT_SQL:/docker-entrypoint-initdb.d/DB_INIT.SQL
 
 phpmyadmin:
     links:
